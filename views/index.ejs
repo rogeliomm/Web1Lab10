@@ -1,0 +1,32 @@
+<%- include ("./partials/_header") %>
+
+
+
+<div class="container">
+  <a href ="/newPost"><button type="button" class="btn btn-primary">Create New Post</button></a>
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <% if (tasks.length === 0) { %>
+        <h2 class="blog-post-title">There are no posts</h2>
+      <% } %>
+
+      <% for (var i = 0; i < tasks.length; i++) { %>
+        <div class="blog-post">
+          <h2 class="blog-post-title"><%= tasks[i].title %></h2>
+          <p class="blog-post-meta"><%= tasks[i].date %> <a href="#"><%= tasks[i].author %></a>     </p>
+          <p><%= tasks[i].post_data %></p>
+          <a class = "btn btn-danger" href ="/delete/<%= tasks[i]._id %>"> Delete </a>
+          <a class = "btn btn-info" href ="/edit/<%= tasks[i]._id %>"> Edit </a>
+        </div>
+      <% } %> 
+    </div>
+  </div>
+</main>
+
+
+
+
+<%- include ("./partials/_footer") %>

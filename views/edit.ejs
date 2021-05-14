@@ -1,0 +1,51 @@
+<%- include ("./partials/_header") %>
+
+<% if (editing) { %>
+    <main role="main" class="container">
+        <div class="row">
+        <div class="col-md-8 blog-main">
+            
+            <form action="/edit/<%= task._id %>" method="POST" autocomplete="off">
+            <div class="form-group">
+                <input type="text" class="form-control" name="title" placeholder="Title" value = "<%= task.title %>">
+            </div>
+            <div class="form-group">
+                <input type="text" name="author" class="form-control" placeholder="Author" value = "<%= task.author %>">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="post_data" cols="100" rows="10"
+                placeholder="Add a Description"><%= task.post_data %></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        </div>
+    </main>
+<% } else { %>
+    <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8 blog-main">
+            
+            <form action="/delete/<%= task._id %>" method="POST" autocomplete="off">
+            <fieldset disabled = "disabled">
+              <div class="form-group">
+                <input type="text" class="form-control" name="title" placeholder="Title" value = "<%= task.title %>">
+              </div>
+              <div class="form-group">
+                <input type="text" name="author" class="form-control" placeholder="Author" value = "<%= task.author %>">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="post_data" cols="100" rows="10"
+                  placeholder="Add a Description"><%= task.post_data %></textarea>
+              </div>
+            </fieldset>
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+    </main>   
+<% } %>
+  
+
+
+<%- include ("./partials/_footer") %>
